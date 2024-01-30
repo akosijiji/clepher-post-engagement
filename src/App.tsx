@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import './App.css';
 import PostData from './types/PostData';
 import Sidebar from './components/Sidebar';
-import Pagination from './components/Pagination';
 import Table from './components/Table';
 import Breadcrumbs from './components/Breadcrumbs';
 
@@ -33,15 +32,23 @@ function App() {
       acquired_subscribers: '5',
       conversion_rate: '0%',
     },
+    { 
+      id: 4,
+      name: 'sample 4',
+      platform: 'fb',
+      total_engaged: '3/10',
+      acquired_subscribers: '5',
+      conversion_rate: '0%',
+    },
   ];
 
   const [posts, setPostData] = useState<Array<PostData>>(postData);
   const myModalRef = useRef<HTMLDialogElement>(null);
-
+ 
   const handleDropdownClick = () => {
     (document.activeElement as HTMLElement).blur();
   };
-  
+
   return (
     <div className="App">
 
@@ -75,9 +82,6 @@ function App() {
             {/* Data Table */}
             <Table posts={posts} />
 
-            {/* Pagination */}
-            <Pagination />  
-          
           </div>
           {/* End of Table content */}             
         </div> 
@@ -89,7 +93,6 @@ function App() {
         </div>
         {/* End of drawer side */}
       </div>
-
 
       {/* Modal */}
       {
